@@ -2,7 +2,7 @@
 
 在第1章中，我们从理想开关的角度介绍了金属-氧化物-半导体（MOS）晶体管的工作方式。如第1.9节所述，芯片的性能和功耗取决于晶体管和导线的电流与电容。在本章中，我们将更详细地研究MOS晶体管的特性；第6章将讨论导线。
 
-![fig-2.1](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.1.png)
+![fig-2.1](./src/chapter2/fig-2.1.png)
 
 <small> 图 2.1 MOS晶体管符号</small>
 
@@ -12,7 +12,7 @@ MOS晶体管是一种多数载流子器件，其中源极和漏极之间导电�
 
 在图2.2(a)中，栅极上施加负电压，因此栅极带负电荷。带正电荷的可移动空穴被吸引到栅极下方的区域。这称为积累模式。在图2.2(b)中，栅极上施加一个较小的正电压，导致栅极带一些正电荷。体中的空穴被排斥出栅极正下方的区域，导致在栅极下方形成耗尽区。在图2.2(c)中，施加超过临界阈值电压Vt的更高正电压，将更多正电荷吸引到栅极。空穴被进一步排斥，体中的一些自由电子被吸引到栅极下方的区域。p型体中的这一导电电子层称为反型层。阈值电压取决于体中的掺杂剂数量和氧化层厚度tox。如本例所示，它通常为正，但也可以设计为负。
 
-![fig-2.2](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.2.png)
+![fig-2.2](./src/chapter2/fig-2.2.png)
 
 <small>图2.2 MOS结构演示（a）积累、（b）耗尽和（c）反型</small>
 
@@ -20,7 +20,7 @@ MOS晶体管是一种多数载流子器件，其中源极和漏极之间导电�
 
 当在漏极施加一个小的正电位Vds时（图2.3(c)），电流Ids通过沟道从漏极流向源极。这种工作模式称为**线性区**、**电阻区**、**三极管区**、**非饱和区**或**不饱和区**；电流随漏极电压和栅极电压的增加而增加。如果Vds足够大，使得Vgd < Vt，则沟道在漏极附近不再反型，发生**夹断**（图2.3(d)）。然而，在正漏极电压的影响下，电子的漂移运动仍能引起传导。当电子到达沟道末端时，它们被注入漏极附近的耗尽区，并加速向漏极运动。超过该漏极电压后，电流Ids仅受栅极电压控制，不再受漏极影响。这种模式称为**饱和区**。
 
-![fig-2.3](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.3.png)
+![fig-2.3](./src/chapter2/fig-2.3.png)
 
 <small>图2.3 nMOS晶体管展示截止区、线性区和饱和区的工作状态</small>
 
@@ -28,7 +28,7 @@ MOS晶体管是一种多数载流子器件，其中源极和漏极之间导电�
 
 图2.4中的pMOS晶体管的工作方式恰好相反。n型体区接高电位，因此与p型源极和漏极形成的结通常处于反偏状态。当栅极也为高电位时，漏极和源极之间没有电流流过。当栅极电压降低一个阈值Vt时，空穴被吸引，在栅极正下方形成p型沟道，使电流能够在漏极和源极之间流动。两种类型晶体管的阈值电压不一定相等，因此我们使用Vtn和Vtp来区分nMOS和pMOS阈值。
 
-![fig-2.4](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.4.png)
+![fig-2.4](./src/chapter2/fig-2.4.png)
 
 <small>图2.4 PMOS晶体管</small>
 
@@ -52,70 +52,70 @@ MOS晶体管是一种多数载流子器件，其中源极和漏极之间导电�
 
 让我们推导一个模型[Shockley52, Cobbold70, Sah64]，用于描述nMOS晶体管在上述每个区域中的电流与电压（I-V）关系。该模型假设沟道长度足够长，使得横向电场（源极和漏极之间的电场）相对较低，而在纳米级器件中情况已不再如此。该模型有多种称谓：长沟道模型、理想模型、一阶模型或肖克利模型。后续章节将对该模型进行修正，以反映高电场、泄漏和其他非理想效应。
 
-![fig-2.5](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.5.png)
+![fig-2.5](./src/chapter2/fig-2.5.png)
 
 长沟道模型假设截止晶体管的电流为0。当晶体管导通（Vgs > Vt）时，栅极吸引载流子（电子）形成沟道。电子从源极向漏极漂移，其速率与这两个区域之间的电场成正比。因此，如果我们知道沟道中的电荷量及其移动速度，就可以计算电流。我们知道电容器每个极板上的电荷为Q = CV。因此，沟道中的电荷Qchannel为
 
-![for-2.1](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.1.png)
+![for-2.1](./src/chapter2/for-2.1.png)
 
 其中Cg是栅极到沟道的电容，Vgc − Vt是吸引电荷到沟道的电压中，超过从p型反型为n型所需最小电压的那部分。栅极电压是相对于沟道而言的，而沟道并未接地。如果源极电位为Vs，漏极电位为Vd，则平均电位为Vc = (Vs + Vd)/2 = Vs + Vds/2。因此，栅极与沟道电位之间的平均差值Vgc为Vg − Vc = Vgs − Vds/2，如图2.5所示。
 
 我们可以将栅极建模为平行板电容器，其电容与面积除以厚度成正比。如果栅极长度为L、宽度为W，氧化层厚度为tox，如图2.6所示，则电容为
 
-![for-2.2](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.2.png)
+![for-2.2](./src/chapter2/for-2.2.png)
 
 其中，ε₀ 是真空介电常数，为 8.85 × 10⁻¹⁴ F/cm，而 SiO₂ 的介电常数是它的 k₀ₓ = 3.9 倍。通常，ε₀ₓ/t₀ₓ 项称为 C₀ₓ，即栅氧化层的单位面积电容。
 
-![fig-2.6](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.6.png)
+![fig-2.6](./src/chapter2/fig-2.6.png)
 
 <small>图2.6 晶体管尺寸</small>
 
 一些纳米工艺使用具有更高介电常数的不同栅极电介质。在这些工艺中，我们将tox称为等效氧化层厚度（EOT），即具有相同Cox的SiO₂层的厚度。在这种情况下，tox比实际电介质更薄。沟道中的每个载流子被加速到与横向电场（即源极和漏极之间的电场）成正比的平均速度v。比例常数μ称为迁移率。
 
-![for-2.3](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.3.png)
+![for-2.3](./src/chapter2/for-2.3.png)
 
 迁移率的典型值为500–700 cm²/V·s。然而，当今大多数晶体管工作在场强远高于此的条件下，迁移率受到严重限制（见第2.4.1节）。
 
 电场E等于漏极和源极之间的电压差Vds除以沟道长度L。
 
-![for-2.4](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.4.png)
+![for-2.4](./src/chapter2/for-2.4.png)
 
 载流子穿过沟道所需的时间为沟道长度除以载流子速度：L/v。因此，源极和漏极之间的电流等于沟道中的总电荷量除以穿过所需的时间。
 
-![for-2.5](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.5.png)
+![for-2.5](./src/chapter2/for-2.5.png)
 
 而
 
-![for-2.6](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.6.png)
+![for-2.6](./src/chapter2/for-2.6.png)
 
 术语Vgs – Vt出现得如此频繁，因此将其缩写为VGT是方便的。
 公式(2.5)描述了线性工作区，适用于Vgs > Vt但Vds相对较小的情况。之所以称为线性或电阻区，是因为当Vds << VGT时，Ids几乎随Vds线性增加，就像理想电阻一样。几何参数和工艺相关参数有时合并为一个因子β。不要将此处的β与双极晶体管中集电极电流与基极电流之比所用的符号相混淆。一些文献将工艺相关参数单独归为一个称为“k′”的常数。
 
-![for-2.7](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.7.png)
+![for-2.7](./src/chapter2/for-2.7.png)
 
 如果Vds大于Vdsat（即VGT），沟道在漏极附近不再反型；我们说它被夹断了。超过这一点（称为漏极饱和电压），增加漏极电压对电流不再有进一步影响。将最大电流这一点上的Vds = Vdsat代入公式(2.5)，我们得到与Vds无关的饱和电流表达式。
 
-![for-2.8](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.8.png)
+![for-2.8](./src/chapter2/for-2.8.png)
 
 该表达式适用于Vgs > Vt且Vds > Vdsat的情况。因此，长沟道MOS晶体管在饱和区表现出平方律特性。晶体管的两个关键品质因数是Ion和Ioff。Ion（也称Idsat）是Vgs = Vds = VDD时的导通电流Ids。Ioff是Vgs = 0且Vds = VDD时的截止电流。根据长沟道模型，Ioff = 0，且
 
-![for-2.9](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.9.png)
+![for-2.9](./src/chapter2/for-2.9.png)
 
 公式(2.10)总结了三个区域的电流：
 
-![for-2.10](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.10.png)
+![for-2.10](./src/chapter2/for-2.10.png)
 
 示例2.1  
 考虑一个65 nm工艺中的nMOS晶体管，其最小绘制沟道长度为50 nm（λ = 25 nm）。设W/L = 4/2 λ（即0.1 μm / 0.05 μm）。在该工艺中，栅氧化层厚度为10.5 Å。估算70°C时电子的高场迁移率为80 cm²/V·s。阈值电压为0.3 V。使用长沟道模型绘制Vgs = 0、0.2、0.4、0.6、0.8和1.0 V时Ids随Vds变化的曲线。  
 **解**：我们首先计算β。
 
-![for-2.11](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.11.png)
+![for-2.11](./src/chapter2/for-2.11.png)
 
 图2.7(a)显示了该晶体管的I-V特性。根据一阶模型，栅极电压低于Vt时电流为零。对于更高的栅极电压，在Vds较小时，电流随Vds线性增加。当Vds达到饱和点Vdsat = VGT时，电流趋于平稳，并最终在晶体管饱和时变得与Vds无关。我们随后将会看到，肖克利模型在高电压下高估了电流，因为它没有考虑高电场引起的迁移率退化和速度饱和。
 
 pMOS晶体管的行为方式相同，但所有电压和电流的符号相反。其I-V特性位于第三象限，如图2.7(b)所示。为保持本文符号的简洁，我们将忽略符号，只需记住pMOS晶体管中电流从源极流向漏极即可。硅中空穴的迁移率通常低于电子。这意味着在相同尺寸下，pMOS晶体管提供的电流小于nMOS晶体管，因此速度较慢。符号μn和μp分别用于区分nMOS和pMOS晶体管中电子和空穴的迁移率。迁移率比μn/μp通常为2–3；本书示例中一般取2。pMOS晶体管与图2.7(a)中的nMOS具有相同的几何尺寸，但μp = 40 cm²/V·s，Vtp = –0.3 V。类似地，βn、βp、k′n和k′p有时也用于区分nMOS和pMOS的I-V特性。
 
-![fig-2.7](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.7.png)
+![fig-2.7](./src/chapter2/fig-2.7.png)
 
 <small>图2.7 理想4/2 λ（a）nMOS和（b）pMOS晶体管的I-V特性</small>
 
@@ -129,23 +129,23 @@ MOS晶体管的每个端子与其他端子之间都存在电容。通常，这�
 
 MOS晶体管的栅极是一个良好的电容器。实际上，正是其电容吸引电荷使沟道反型，因此高栅极电容是获得高Ids所必需的。如第2.2节所述，栅极电容可以看作一个平行板电容器，栅极在上，沟道在下，中间是薄氧化层电介质。因此，电容为——
 
-![for-2.12](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.12.png)
+![for-2.12](./src/chapter2/for-2.12.png)
 
 栅极电容的下极板是沟道，它不是晶体管的端子之一。当晶体管导通时，沟道从源极延伸（若晶体管处于非饱和区则到达漏极，若处于饱和区则提前截止）。因此，我们通常将栅极电容近似为终止于源极，并称之为Cgs。
 
 逻辑电路中使用的大多数晶体管都采用最小可制造沟道长度，因为这样可以获得最高的速度和最低的动态功耗。因此，将这一最小长度L视为特定工艺的常数后，我们可以定义
 
-![fig-2.13](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.13.png)
+![fig-2.13](./src/chapter2/for-2.13.png)
 
 当
 
-![for-2.14](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.14.png)
+![for-2.14](./src/chapter2/for-2.14.png)
 
 值得注意的是，如果我们开发一种更先进的制造工艺，使得沟道长度和氧化层厚度按相同比例缩小，则每微米电容Cpermicron保持不变。这种关系对于快速计算很方便，但并不精确；在90nm和65nm节点，Cpermicron已从旧工艺中的约2 fF/µm下降到约1 fF/µm。表8.5列出了多种工艺下的栅极电容。
 
 除了栅极之外，源极和漏极也存在电容。这些电容并非器件工作的根本，但会影响电路性能，因此被称为寄生电容。源极和漏极电容来自源/漏扩散区与体区之间的p-n结，因此也称为扩散电容Csb和Cdb。沿结形成无自由载流子的耗尽区，该耗尽区在导电的p型和n型区域之间起绝缘体作用，产生结电容。这些结电容的大小取决于源/漏扩散区的面积和周长、扩散深度、掺杂浓度以及电压。由于扩散区既有高电容又有高电阻，版图中通常使其尽可能小。经常见到三种类型的扩散区，如图2.8中两个串联晶体管所示。在图2.8(a)中，每个源极和漏极都有其各自独立的带接触孔的扩散区。在图2.8(b)中，底部晶体管的漏极和顶部晶体管的源极共用一个带接触孔的扩散区。在图2.8(c)中，源极和漏极合并为一个无接触孔的扩散区。当晶体管在VDD和GND之间开关时，每种类型区域的平均电容可以通过仿真计算或测量得到。表8.5也列出了多种工艺下每种情形的电容值。
 
-![fig-2.8](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.8.png)
+![fig-2.8](./src/chapter2/fig-2.8.png)
 
 <small>图2.8 扩散区几何形状</small>
 
@@ -158,7 +158,7 @@ MOS栅极位于沟道上方，并可能部分覆盖源极和漏极扩散区。�
 1. **截止区**。当晶体管截止（Vgs < Vt）时，沟道未反型，栅极上的电荷与体区的相反电荷相匹配。这称为Cgb，即栅极到体电容。当Vgs为负时，晶体管处于积累区，Cgb = C₀。当Vgs增加但仍低于阈值时，表面形成耗尽区，这实际上将下极板从氧化层向下移动，从而减小电容，如图2.9(a)所示。
 2. **线性区**。当Vgs > Vt时，沟道反型，再次充当良好的导电底板。然而，沟道连接到源极和漏极，而非体区，因此Cgb降至0。在Vds较小时，沟道电荷大致在源极和漏极之间均分，因此Cgs = Cgd = C₀/2。随着Vds增大，漏极附近区域反型程度降低，因此电容的更大比例归因于源极，更小比例归因于漏极，如图2.9(b)所示。
 3. **饱和区**。当Vds > Vdsat时，晶体管饱和，沟道夹断。此时，所有本征电容都指向源极，如图2.9(b)所示。由于夹断效应，理想晶体管在饱和区的电容减小为Cgs = 2/3 C₀ [Gray01]。
-4. ![fig-2.9](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.9.png)
+4. ![fig-2.9](./src/chapter2/fig-2.9.png)
 
 <small>图2.9 本征栅极电容 Cgc = Cgs + Cgd + Cgb 随 (a) Vgs 和 (b) Vds 变化的函数</small>
 
@@ -166,13 +166,13 @@ MOS栅极位于沟道上方，并可能部分覆盖源极和漏极扩散区。�
 
 <small>表2.1 本征MOS栅极电容的近似</small>
 
-![tab-2.1](D:\code\translations\CMOS-VLSI-Design\src\chapter2\tab-2.1.png)
+![tab-2.1](./src/chapter2/tab-2.1.png)
 
 在实际器件中，栅极会与源极和漏极发生交叠，同时存在终止于源极和漏极的边缘电场。这会导致额外的交叠电容，如图2.10所示。这些电容与晶体管的宽度成正比。典型值为Cgsol = Cgdol = 0.2–0.4 fF/µm。它们应被加到本征栅极电容上，以得到总电容。
 
-![for-2.15](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.15.png)
+![for-2.15](./src/chapter2/for-2.15.png)
 
-![fig-2.10](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.10.png)
+![fig-2.10](./src/chapter2/fig-2.10.png)
 
 <small>图 2.10 **交叠电容**</small>
 
@@ -180,7 +180,7 @@ MOS栅极位于沟道上方，并可能部分覆盖源极和漏极扩散区。�
 
 通过使用基于电荷的模型可以实现更精确的栅极电容建模[Cheng99]。对于数字电路延迟计算的目的，我们通常将Cg近似为Cgs + Cgd + Cgb ≈ C₀ + 2CgolW，或使用从仿真中提取的有效电容[Nose00b]。重要的是要记住，该模型显著高估了刚好工作在阈值以下的晶体管的电容。
 
-![fig-2.11](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.11.png)
+![fig-2.11](./src/chapter2/fig-2.11.png)
 
 <small>**图2.11 与数据相关的栅极电容**</small>
 
@@ -192,29 +192,29 @@ MOS栅极位于沟道上方，并可能部分覆盖源极和漏极扩散区。�
 
 源极总寄生电容为
 
-![for-2.16](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.16.png)
+![for-2.16](./src/chapter2/for-2.16.png)
 
 其中，Cjbs（体区与源极底部之间结的电容）的单位为电容/面积，Cjbssw（体区与源极侧壁之间结的电容）的单位为电容/长度。由于耗尽区厚度取决于偏置条件，这些寄生参数是非线性的。面积结电容项为[Gray01]：
 
-![for2.17](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.17.png)
+![for2.17](./src/chapter2/for-2.17.png)
 
-![fig-2.12](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.12.png)
+![fig-2.12](./src/chapter2/fig-2.12.png)
 
 <small>图2.12 扩散区几何结构</small>
 
 CJ是零偏置时的结电容，具有很强的工艺依赖性。MJ是结梯度系数，通常取值范围为0.5至0.33，具体取决于扩散结的陡峭程度。Φb是内建电势，取决于掺杂浓度。
 
-![for-2.18](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.18.png)
+![for-2.18](./src/chapter2/for-2.18.png)
 
 vT是热力学中的热电压，不要与阈值电压Vt混淆。其值等于kT/q（室温下为26 mV），其中k = 1.380 × 10⁻²³ J/K是玻尔兹曼常数，T是绝对温度（室温下为300 K），q = 1.602 × 10⁻¹⁹ C是电子的电荷量。NA和ND分别是体区和源极扩散区的掺杂浓度。ni是本征硅中的本征载流子浓度，在300 K时其值为1.45 × 10¹⁰ cm⁻³。
 
 侧壁电容项具有类似的形式，但使用不同的系数。
 
-![for-2.19](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.19.png)
+![for-2.19](./src/chapter2/for-2.19.png)
 
 在约0.35μm以下的工艺中，采用浅槽隔离技术，用SiO₂绝缘体围绕晶体管（见第3.2.6节），沿非导电沟槽的侧壁电容往往极小，而面向沟道的侧壁电容则更为显著。在某些SPICE模型中，该侧壁（紧邻栅极和沟道）的电容由另一组参数指定：
 
-![for-2.20](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.20.png)
+![for-2.20](./src/chapter2/for-2.20.png)
 
 第8.3.4节将进一步讨论SPICE周长电容模型。
 
@@ -227,11 +227,11 @@ vT是热力学中的热电压，不要与阈值电压Vt混淆。其值等于kT/q
 
 **解**：由图2.8可知，单位尺寸的扩散接触为4λ × 5λ，即0.1 µm × 0.125 µm。面积为0.0125 µm²，周长为0.35 µm，外加沿沟道方向的0.1 µm。在零偏置下，Cjbd = 1.2 fF/µm²，Cjbdsw = 0.1 fF/µm，Cjbdswg = 0.36 fF/µm。因此，总电容为
 
-![for-2.21](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.21.png)
+![for-2.21](./src/chapter2/for-2.21.png)
 
 当漏极电压为VDD时，电容减小至
 
-![for-2.22](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.22.png)
+![for-2.22](./src/chapter2/for-2.22.png)
 
 出于手算性能估算的目的，这种非线性电容过于繁琐。对于数字应用而言，在开关范围内取平均的有效电容就足够令人满意了。在本例中，有效漏极电容可以近似为两个极端值的平均值，即0.081 fF。
 
@@ -245,7 +245,7 @@ vT是热力学中的热电压，不要与阈值电压Vt混淆。其值等于kT/q
 
 
 
-![fig-2.12](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.13.png)
+![fig-2.12](./src/chapter2/fig-2.13.png)
 
 
 
@@ -265,7 +265,7 @@ vT是热力学中的热电压，不要与阈值电压Vt混淆。其值等于kT/q
 
 几种泄漏源导致标称截止的晶体管中有电流流过。当Vgs < Vt时，电流呈指数下降，而不是突然变为零。这称为亚阈值导电。流入栅极的电流Ig理想情况下为零。然而，随着栅氧化层厚度减少到仅有少数原子层时，电子隧穿通过栅极，导致一定的栅极泄漏电流。源极和漏极扩散区通常是反偏二极管，也会产生流入衬底或阱的结泄漏电流。
 
-![fig-2.14](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.14.png)
+![fig-2.14](./src/chapter2/fig-2.14.png)
 
 <small>图2.14 仿真和理想I-V特性</small>
 
@@ -283,7 +283,7 @@ vT是热力学中的热电压，不要与阈值电压Vt混淆。其值等于kT/q
 
 迁移率退化可以通过将μ替换为一个更小的、随Vgs变化的有效迁移率μeff来建模。一个能够较好地匹配多个工艺实验数据的通用模型[Chen96, Chen97]为
 
-![for-2.23](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.23.png)
+![for-2.23](./src/chapter2/for-2.23.png)
 
 示例2.3  
 计算nMOS和pMOS晶体管在完全导通时的有效迁移率。使用示例2.1中的物理参数。  
@@ -292,17 +292,17 @@ vT是热力学中的热电压，不要与阈值电压Vt混淆。其值等于kT/q
 
 
 
-![fig-2.15](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.15.png)
+![fig-2.15](./src/chapter2/fig-2.15.png)
 
 <small>图2.15 300 K下载流子速度随电场的变化，改编自[Jacoboni77]。速度在高场下趋于饱和。</small>
 
 图2.15显示了载流子速度随漏极与源极之间电场E变化的实测数据。在低场下，速度随电场线性增加，斜率为迁移率μeff。当电场超过临界水平Ec时，速度趋于饱和，达到vsat，电子的vsat约为10⁷ cm/s，空穴约为8×10⁶ cm/s [Muller03]。如图所示，该速度可以用以下表达式进行相当好的近似[Toh88, Takeuchi94]：
 
-![for-2.24](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.24.png)
+![for-2.24](./src/chapter2/for-2.24.png)
 
 其中，由连续性条件，临界电场为
 
-![for-2.25](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.25.png)
+![for-2.25](./src/chapter2/for-2.25.png)
 
 临界电压 Vc 是达到临界有效电场时的漏-源电压：Vc = EcL。
 
@@ -312,7 +312,7 @@ vT是热力学中的热电压，不要与阈值电压Vt混淆。其值等于kT/q
 使用示例2.3中的有效迁移率，求完全导通状态下nMOS和pMOS晶体管的临界电压。
 **解**：使用公式(2.25)。
 
-![](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-n-2.1.png)
+![](./src/chapter2/for-n-2.1.png)
 
 nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界电压Vc-n与VDD相当。pMOS晶体管的迁移率较低，因此速度饱和问题不那么严重。
 
@@ -322,33 +322,33 @@ nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界�
 
 
 
-![for-2.26](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.26.png)
+![for-2.26](./src/chapter2/for-2.26.png)
 
 注意，由于迁移率退化，\( R_{\text{eff}} \) 是 \( V_{gs} \) 的递减函数。观察到线性区的电流与公式 (2.5) 相同，只是迁移率项被一个与 \( V_{ds} \) 相关的因子减小了。在足够高的横向电场下，电流饱和于某个取决于最大载流子速度的值。令公式 (2.26) 的两部分在 \( V_{ds} = V_{dsat} \) 处相等，我们可以求解饱和电压。
 
 
 
-![for-2.27](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.27.png)
+![for-2.27](./src/chapter2/for-2.27.png)
 
 注意到公式(2.27)与并联电阻方程形式相同，可以看出Vdsat小于VGT和Vc中的较小者。最后，将公式(2.27)代入公式(2.26)，得到考虑速度饱和的简化饱和电流表达式：
 
-![for-2.28](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.28.png)
+![for-2.28](./src/chapter2/for-2.28.png)
 
 如果VGT远小于Vc，则速度饱和效应可忽略不计，公式(2.28)退化为平方律模型。这也称为长沟道区域。但如果VGT远大于Vc，则公式(2.28)趋近于速度饱和极限。
 
-![for-2.29](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.29.png)
+![for-2.29](./src/chapter2/for-2.29.png)
 
 观察到，在长沟道区域，漏极电流与电压呈二次方关系；而在完全速度饱和时，则呈线性关系。在中等电源电压下，晶体管工作于速度既不随电场线性增加、也未完全饱和的区域。公式(2.30)给出的F次幂律模型提供了一个简单的近似来捕捉这一行为[Sakurai90]。F称为速度饱和指数，通过拟合实测I-V数据曲线确定。沟道较长或VDD较低的晶体管在饱和区呈现二次I-V特性，用F = 2建模。随着晶体管速度饱和程度加深，增大Vgs对电流的影响减小，F值降低，对于完全速度饱和的晶体管，F趋于1。为简化起见，该模型在线性区采用直线近似。总体而言，该模型基于三个参数，这些参数可通过I-V特性曲线的经验拟合确定：F、G Pc 和 Pv。
 
-![for-2.30](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.30.png)
+![for-2.30](./src/chapter2/for-2.30.png)
 
 而
 
-![for-2.31](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.31.png)
+![for-2.31](./src/chapter2/for-2.31.png)
 
 
 
-![fig-2.16](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.16.png)
+![fig-2.16](./src/chapter2/fig-2.16.png)
 
 <small>图2.16 F次幂律模型与仿真晶体管行为的比较</small>
 
@@ -358,7 +358,7 @@ nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界�
 
 这些模型对于手算来说过于复杂，难以提供太多直观认识。一种更简单的方法是观察到，在速度饱和晶体管中，当晶体管强导通时，Ids随Vgs线性增长而非二次方增长。图2.17绘制了Ids随Vgs变化的曲线（保持Vds = Vgs）。这等效于绘制Ion随VDD变化的曲线。当Vgs显著高于Vt时，Ids与直线的拟合相当好。因此，我们可以将导通电流近似为
 
-![for-2.32](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.32.png)
+![for-2.32](./src/chapter2/for-2.32.png)
 
 其中 Vt* 是 x 截距。
 
@@ -366,21 +366,21 @@ nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界�
 
 ## 2.4.2 沟道长度调制
 
-![fig-2.17](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.17.png)
+![fig-2.17](./src/chapter2/fig-2.17.png)
 
 <small>图2.17 饱和区中Ids随Vgs的变化，显示高Vgs下良好的线性拟合</small>
 
 理想情况下，处于饱和区的晶体管，其Ids与Vds无关，使得晶体管成为完美的电流源。如第2.3.3节所述，漏极与体区之间的p-n结形成一个耗尽区，其宽度Ld随Vdb的增加而增大，如图2.18所示。该耗尽区有效地将沟道长度缩短为
 
-![for-2.33](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.33.png)
+![for-2.33](./src/chapter2/for-2.33.png)
 
 为了避免将体电压引入计算，我们假设源极电压接近体电压，因此Vdb ≈ Vds。因此，增大Vds会减小有效沟道长度。更短的沟道长度导致更高的电流；因此，在饱和区Ids随Vds增大而增大，如图2.18所示。这可以通过将公式(2.10)乘以因子(1 + Vds/VA)来粗略建模，其中VA称为厄利电压[Gray01]。在饱和区，我们得到
 
-![for-2.34](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.34.png)
+![for-2.34](./src/chapter2/for-2.34.png)
 
 随着沟道长度变短，沟道长度调制效应变得相对更为重要。因此，VA与沟道长度成正比。这种沟道长度调制模型是对非线性行为的严重过度简化，对于概念理解比对于精确器件建模更有用。沟道长度调制对于模拟设计人员非常重要，因为它会降低放大器的增益。对于定性理解数字电路的行为，它通常不重要。
 
-![fig-2.18](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.18.png)
+![fig-2.18](./src/chapter2/fig-2.18.png)
 
 <small>图2.18 耗尽区缩短有效沟道长度</small>
 
@@ -390,19 +390,19 @@ nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界�
 
 2.4.3.1 体效应 到目前为止，我们一直将晶体管视为具有栅极、源极和漏极的三端器件。然而，体区是隐含的第四端。当在源极与体区之间施加电压Vsb时，会使沟道反型所需的电荷量增加，因此会提高阈值电压。阈值电压可建模为
 
-![for-2.35](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.35.png)
+![for-2.35](./src/chapter2/for-2.35.png)
 
 其中Vt₀是源极处于体电位时的阈值电压，Ks是阈值时的表面势（有关表面势的进一步讨论，参见器件物理教材如[Tsividis99]），γ是体效应系数，通常在0.4至1 V¹/²范围内。这些参数又取决于沟道中的掺杂浓度NA。体效应会进一步降低传输晶体管尝试传递弱值（例如nMOS晶体管传递‘1’）时的性能，我们将在第2.5.4节中讨论。第5.3.4节将描述如何有意施加体偏置来改变阈值电压，从而在性能与亚阈值泄漏电流之间进行权衡。
 
-![for-2.37](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.37.png)
+![for-2.37](./src/chapter2/for-2.37.png)
 
 对于施加在源极或体区上的小电压，公式(2.35)可以线性化为
 
-![for-2.38](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.38.png)
+![for-2.38](./src/chapter2/for-2.38.png)
 
 其中
 
-![for-2.39](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.39.png)
+![for-2.39](./src/chapter2/for-2.39.png)
 
 
 
@@ -410,14 +410,14 @@ nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界�
 考虑一个65 nm工艺中的nMOS晶体管，其标称阈值电压为0.3 V，掺杂浓度为8 × 10¹⁷ cm⁻³。体区通过衬底接触接地。在室温下，如果源极电压为0.6 V而非0 V，阈值变化多少？  
 **解**：在室温下，热电压vT = kT/q = 26 mV，且ni = 1.45 × 10¹⁰ cm⁻³。阈值增加0.04 V。
 
-![for-2.40](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.40.png)
+![for-2.40](./src/chapter2/for-2.40.png)
 
 
 
 2.4.3.2 漏致势垒降低  
 漏极电压Vds产生的电场会影响阈值电压。这种漏致势垒降低（DIBL）效应在短沟道晶体管中尤为显著。它可以建模为——
 
-![for-2.41](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.41.png)
+![for-2.41](./src/chapter2/for-2.41.png)
 
 2.4.3.3 短沟道效应  
 阈值电压通常随沟道长度增加而增大。这种现象在L较小、源极和漏极耗尽区延伸到沟道相当大一部分时尤为显著，因此被称为短沟道效应或Vt滚降[Tsividis99, Cheng99]。在某些工艺中，反向短沟道效应会导致Vt随长度增加而减小。  
@@ -430,7 +430,7 @@ nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界�
 
 即使晶体管在标称上处于截止状态，它们也会泄漏少量电流。泄漏机制包括源极与漏极之间的亚阈值导电、栅极到体的栅极泄漏，以及源极到体和漏极到体的结泄漏，如图2.19所示[Roy03, Narendra06]。亚阈值导电由载流子热发射越过阈值所设定的势垒引起。栅极泄漏是由隧穿穿过极薄栅极电介质的量子力学效应引起的。结泄漏是由流过源/漏扩散区与体区之间p-n结的电流引起的。
 
-![fig-2.19](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.19.png)
+![fig-2.19](./src/chapter2/fig-2.19.png)
 
 <small>图2.19 泄漏电流路径</small>
 
@@ -443,23 +443,23 @@ nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界�
 
 
 
-![fig-2.20](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.20.png)
+![fig-2.20](./src/chapter2/fig-2.20.png)
 
 <small>图2.20 65 nm nMOS晶体管在70°C时对数坐标下的I-V特性</small>
 
 亚阈值泄漏电流由公式(2.42)描述。Ids0是阈值处的电流，取决于工艺和器件几何尺寸，通常从仿真中提取，但也可由公式(2.43)计算得出；其中e^1.8项是根据经验得出的[Sheu87]。n是与耗尽区特性相关的工艺相关参数，对于CMOS工艺，其典型范围为1.3至1.7。最后一项表明，如果Vds = 0，泄漏为0，但当Vds为热电压vT的几倍时（例如Vds > 50 mV时），泄漏增加到其全部值。更重要的是，漏致势垒降低（如MVds项所示）实际上降低了阈值电压，这可能导致Vds = VDD时的泄漏比小Vds时增加一个数量级。当Vsb ≈ 0时，体效应也会调制Vt。
 
-![for-2.43](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.43.png)
+![for-2.43](./src/chapter2/for-2.43.png)
 
 亚阈值导电在极低功耗电路中被加以利用，这将在第9.6节中探讨。它会影响依赖于电容器上电荷存储的动态电路和DRAM。通过截止晶体管的导电会使电容器放电，除非定期刷新或有少量电流来抵消泄漏。泄漏也会导致空闲电路中的功耗。亚阈值泄漏随Vt降低或温度升高呈指数增长，因此对于使用低电源电压和阈值电压的芯片以及工作在高温下的芯片来说，这是一个主要问题。
 
 如图2.20所示，亚阈值电流在半对数图上拟合为一条直线。该直线斜率的倒数称为亚阈值斜率S。
 
-![for-2.44](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.44.png)
+![for-2.44](./src/chapter2/for-2.44.png)
 
 亚阈值斜率表示栅极电压必须降低多少才能使泄漏电流减小一个数量级。室温下的典型值为100 mV/十倍频程。公式(2.42)可以使用亚阈值斜率重写为
 
-![for-2.45](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.45.png)
+![for-2.45](./src/chapter2/for-2.45.png)
 
 其中 \( I_{\text{off}} \) 是 \( V_{gs} = 0 \)、\( V_{ds} = V_{DD} \) 时的亚阈值电流。
 
@@ -467,7 +467,7 @@ nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界�
 在室温下，若n = 1.5，对于截止晶体管（Vgs = 0），其泄漏电流至少要比勉强导通（Vgs = Vt）的晶体管小10³倍，所需的最小阈值电压是多少？绝缘体上硅（SOI）工艺的一个优点是具有更小的n（见第9.5节）。若n = 1.3，SOI所需的阈值电压是多少？  
 **解**：室温下vT = 26 mV。假设Vds远大于vT，因此泄漏显著。求解
 
-![for-2.46](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.46.png)
+![for-2.46](./src/chapter2/for-2.46.png)
 
 在CMOS工艺中，Vgs每低于阈值90 mV，泄漏电流就下降一个数量级。这通常被称为亚阈值斜率S = 90 mV/十倍频程。在SOI工艺中，亚阈值斜率S为78 mV/十倍频程，因此仅需234 mV的阈值电压。
 
@@ -480,25 +480,25 @@ nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界�
 
 直接栅极隧穿电流可估计为[Chandrakasan01]：
 
-![for-2.47](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.47.png)
+![for-2.47](./src/chapter2/for-2.47.png)
 
 公式(2.48)中，A和B为工艺相关常数。
 晶体管需要较高的Cox以获得良好的导通电流，这推动了氧化层厚度的减薄。隧穿电流随氧化层厚度呈指数下降，只是近来才变得显著。图2.21绘制了不同氧化层厚度下栅极泄漏电流密度（电流/面积）JG随电压的变化曲线。厚度每减少1 Å，栅极泄漏增加约2.7倍或更多[Rohrer05]。较大的隧穿电流不仅影响动态节点，也影响静态功耗，因此将等效氧化层厚度tox限制在至少10.5 Å，以使栅极泄漏低于100 A/cm²。从尺寸角度来看，每层SiO₂原子层约为3 Å，因此这种栅氧化层仅有数个原子层的厚度。第3.4.1.3节将介绍具有更高介电常数的栅极绝缘体创新技术，这些技术在减少隧穿的同时提供良好的Cox。
 
 对于采用SiO₂栅极电介质的晶体管，nMOS的隧穿电流可能比pMOS高一个数量级，因为电子从导带隧穿，而空穴从价带隧穿，面临更高的势垒[Hamzaoglu02]。不同电介质可能具有不同的隧穿特性。
 
-![fig-2.21](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.21.png)
+![fig-2.21](./src/chapter2/fig-2.21.png)
 
 <small>图2.21 栅极泄漏电流（来自[Song01]）</small>
 
-![fig-2.22](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.22.png)
+![fig-2.22](./src/chapter2/fig-2.22.png)
 
 <small>图2.22 CMOS电路中的衬底-扩散区二极管</small>
 
 2.4.4.3 结泄漏  
 扩散区与衬底或阱之间的p-n结形成二极管，如图2.22所示。阱-衬底结是另一个二极管。衬底和阱分别连接到GND或VDD，以确保这些二极管在正常工作时不会正偏。然而，反偏二极管仍会传导少量电流ID。
 
-![for-2.48](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.48.png)
+![for-2.48](./src/chapter2/for-2.48.png)
 
 其中IS取决于掺杂浓度以及扩散区的面积和周长，VD为二极管电压（例如 –Vsb 或 –Vdb）。当结的反偏电压显著大于热电压时，泄漏电流仅为 –IS，通常在 0.1–0.01 fA/µm² 范围内，与其他泄漏机制相比可忽略不计。
 
@@ -506,11 +506,11 @@ nMOS晶体管在正常工作条件下处于速度饱和状态，因为其临界�
 
 BTBT 发生在源/漏区与体区之间的结上，当该结反偏时产生。它取决于反偏电压和掺杂浓度。用于提高 Vt 以减轻亚阈值泄漏的高浓度晕环掺杂，反而导致 BTBT 增大。当硅晶格中的缺陷（称为陷阱）缩短了载流子必须隧穿的距离时，陷阱辅助隧穿（TAT）会进一步加剧泄漏。大部分泄漏发生在最靠近沟道的侧壁，此处掺杂浓度最高。它可以建模为
 
-![for-2.49](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.49.png)
+![for-2.49](./src/chapter2/for-2.49.png)
 
 其中 \(X_j\) 是扩散区的结深，\(E_g\) 是带隙电压，而 \(A\) 和 \(B\) 是工艺相关常数 [Mukhopadhyay05]。在反偏电压为 \(V_{DD}\) 时，沿结的电场为
 
-![for-2.50](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.50.png)
+![for-2.50](./src/chapter2/for-2.50.png)
 
 GIDL发生在栅极部分重叠漏极的区域。当漏极处于高电压而栅极处于低电压时，这种效应最为显著。GIDL电流与栅-漏交叠面积成正比，因此与晶体管宽度成正比。它是电场的强函数，因此随漏-栅电压的增加而迅速增大。然而，在 |Vgd| ≤ VDD 时它通常不显著，仅在试图通过将栅极驱动到电源轨以外来切断亚阈值泄漏时才起作用。
 
@@ -520,11 +520,11 @@ GIDL发生在栅极部分重叠漏极的区域。当漏极处于高电压而栅�
 
 晶体管特性受温度影响[Cobbold66, Vadasz66, Tsividis99, Gutierrez01]。载流子迁移率随温度升高而降低。近似关系为
 
-![for-2.51](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.51.png)
+![for-2.51](./src/chapter2/for-2.51.png)
 
 阈值电压的大小随温度升高几乎线性下降，可近似为：
 
-![for-2.52](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.52.png)
+![for-2.52](./src/chapter2/for-2.52.png)
 
 其中 \( k_{vt} \) 通常约为 1–2 mV/K。  
 在高 VDD 下，\( I_{on} \) 随温度升高而降低。亚阈值泄漏随温度呈指数增加。BTBT 随温度缓慢增加，而栅极泄漏几乎与温度无关。  
@@ -532,7 +532,7 @@ GIDL发生在栅极部分重叠漏极的区域。当漏极处于高电压而栅�
 综合温度效应如图 2.23 所示。在高 Vgs 下，电流具有负温度系数，即随温度升高而降低。在低 Vgs 下，电流具有正温度系数。因此，截止电流随温度升高而增加。  
 导通电流 \( I_{dsat} \) 通常随温度升高而降低，如图 2.24 所示，因此电路性能在高温下最差。然而，对于工作在低 VDD（通常 < 0.7–1.1 V）下的系统，\( I_{dsat} \) 随温度升高而增加 [Kumar06]。
 
-![fig-2.24](D:\code\translations\CMOS-VLSI-Design\src\chapter2\fig-2.24.png)
+![fig-2.24](./src/chapter2/fig-2.24.png)
 
 <small>图2.23 不同温度下处于饱和区的nMOS晶体管的I-V特性</small>                     <small>图2.24 Idsat随温度变化</small>
 
@@ -544,7 +544,7 @@ GIDL发生在栅极部分重叠漏极的区域。当漏极处于高电压而栅�
 
 版图设计者绘制的晶体管具有宽度和长度 \( W_{\text{drawn}} \) 和 \( L_{\text{drawn}} \)。实际栅极尺寸可能与某些因子 \( X_W \) 和 \( X_L \) 存在偏差。例如，制造商可能在保持整体设计规则或金属间距不变的情况下，制作更窄的多晶硅掩模版，或对多晶硅进行过刻蚀以获得更短的沟道（负的 \( X_L \)）。此外，源极和漏极会在栅极下方横向扩散 \( L_D \)，产生载流子必须在源极和漏极之间穿行的较短有效沟道长度。类似地，\( W_D \) 考虑了其他缩小晶体管宽度的效应。综合这些因素，我们可以计算出有效的晶体管长度和宽度，以替代本书其他部分电流和电容方程中的 \( L \) 和 \( W \)。系数2来源于沟道两侧的横向扩散。
 
-![for-2.53](D:\code\translations\CMOS-VLSI-Design\src\chapter2\for-2.53.png)
+![for-2.53](./src/chapter2/for-2.53.png)
 
 因此，绘制长度为两倍的晶体管，其有效长度可能超过两倍。类似地，两个绘制宽度相差两倍的晶体管，其饱和电流的差异可能超过两倍。由于短沟道效应和窄沟道效应，阈值电压也会随晶体管尺寸变化。
 
